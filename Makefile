@@ -25,7 +25,8 @@ help:
 
 build: compile
 	@echo "Building Zensical site..."
-	uv run zensical build --strict
+# 	uv run zensical build --strict
+	uv run python3 python/hooks/hooks.py build --strict
 
 serve:
 	@echo "Starting Zensical development server..."
