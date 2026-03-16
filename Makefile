@@ -25,8 +25,8 @@ help:
 
 build: compile
 	@echo "Building Zensical site..."
-# 	uv run zensical build --strict
-	uv run python3 python/hooks/hooks.py build --strict
+# 	uv run zensical build --clean
+	uv run python3 python/hooks/hooks.py build --clean
 
 serve:
 	@echo "Starting Zensical development server..."
@@ -48,8 +48,6 @@ clean:
 	rm -rf target
 	rm -rf site
 	rm -rf dist
-	rm -f uv.lock
-	rm -f Cargo.lock
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.dll" -not -path "./.venv/*" -exec rm -f {} + 2>/dev/null || true
 	find . -type f -name "*.so" -not -path "./.venv/*" -exec rm -f {} + 2>/dev/null || true
@@ -60,6 +58,8 @@ clean:
 
 distclean: clean
 	rm -rf .venv
+	rm -f uv.lock
+	rm -f Cargo.lock
 	@echo "Full clean complete!"
 
 install:
