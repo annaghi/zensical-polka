@@ -1,31 +1,37 @@
 # Zensical Polka
 
-## Development
+Zensical project demonstrating the [Polka](https://github.com/annaghi/polka) crate.
 
-Init or reset dev environment, served on [localhost:8000](http://localhost:8000)
+Polka is a markdown AST transformer via [markdown-it Rust port](https://github.com/markdown-it-rust/markdown-it) and [Jotdown](https://github.com/hellux/jotdown), exposed to Python through [PyO3](https://pyo3.rs/) / [maturin](https://www.maturin.rs/).
 
-```shell
-make init
-```
+## Prerequisites
 
-```shell
-make reset
-```
+- Python 3.12+
+- [Rust](https://rustup.rs/)
+- [uv](https://docs.astral.sh/uv/)
 
-Start Zensical's dev server
+## Quick Start
 
 ```shell
+make install
 make serve
 ```
 
-Compile Rust crate
+## Debugging
 
-```shell
-make compile
-```
+Set `POLKA_DEBUG=1` to write AST output at each transform stage to `.debug/`.
 
-## Build site
+`make serve` enables this by default.
 
-```shell
-make build
-```
+## Commands
+
+| Command        | Description                                   |
+| -------------- | --------------------------------------------- |
+| `make install` | Full dev environment setup                    |
+| `make serve`   | Zensical dev server (enables `POLKA_DEBUG=1`) |
+| `make build`   | Build Zensical site (compiles Rust first)     |
+| `make compile` | Compile Rust extension via maturin            |
+| `make fix`     | Auto-format and lint (pre-commit)             |
+| `make clean`   | Remove all build artifacts, caches, venv      |
+| `make reset`   | `clean` + `install`                           |
+| `make upgrade` | Full upgrade cycle (deps + pre-commit hooks)  |
