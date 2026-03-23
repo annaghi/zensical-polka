@@ -26,12 +26,12 @@ help:
 build: compile
 	@echo "Building Zensical site..."
 # 	uv run zensical build --clean
-	uv run python3 python/hooks/hooks.py build --clean
+	uv run python3 python/bridge/hooks.py build --clean
 
 serve:
 	@echo "Starting Zensical development server..."
 # 	POLKA_DEBUG=1 uv run zensical serve
-	POLKA_DEBUG=1 uv run python3 python/hooks/hooks.py serve
+	POLKA_DEBUG=1 uv run python3 python/bridge/hooks.py serve
 
 compile:
 	@echo "Compiling Rust extension..."
