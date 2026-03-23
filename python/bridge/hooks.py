@@ -13,7 +13,7 @@ import zensical.markdown as markdown_module
 from zensical.config import get_config
 from zensical.markdown import render as markdown_render
 
-from hooks import generate_html
+from bridge import generate_html
 
 
 def main():
