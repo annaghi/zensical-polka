@@ -30,7 +30,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: uv sync --all-groups
       - run: uv run maturin develop
-      - run: uv run python3 python/hooks/hooks.py build --clean
+      - run: uv run python3 python/bridge/hooks.py build --clean
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
