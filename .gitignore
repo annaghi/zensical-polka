@@ -31,4 +31,5 @@ trace.json
 
 /site
 /dist
+/vendor
 /.debug

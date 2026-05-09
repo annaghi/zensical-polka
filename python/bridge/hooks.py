@@ -9,9 +9,9 @@ import sys
 from pathlib import Path
 
 import zensical.main as main_module
-import zensical.markdown as markdown_module
+import zensical.markdown.render as markdown_module
 from zensical.config import get_config
-from zensical.markdown import render as markdown_render
+from zensical.markdown.render import render
 
 from bridge import generate_html
 
@@ -19,11 +19,11 @@ from bridge import generate_html
 def main():
     """Patch Zensical's Markdown renderer and run the CLI."""
     is_clean_build = "--clean" in sys.argv or "-c" in sys.argv
-    markdown_module.render = wrap_markdown(markdown_render, is_clean_build)
+    markdown_module.render = wrap_markdown(is_clean_build)
     main_module.cli()
 
 
-def wrap_markdown(func, is_clean_build):
+def wrap_markdown(is_clean_build):
     """
     Wrap Zensical Markdown render function to use polka's HTML output.
 
@@ -33,7 +33,7 @@ def wrap_markdown(func, is_clean_build):
 
     def wrapper(content: str, path: str, url: str) -> dict:
         config = get_config()
-        result = func(content, path, url)
+        result = render("", path, url)
 
         result["meta"]["is_clean_build"] = is_clean_build
 
