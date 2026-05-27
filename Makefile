@@ -31,7 +31,7 @@ build: compile
 serve:
 	@echo "Starting Zensical development server..."
 # 	POLKA_DEBUG=1 uv run zensical serve
-	POLKA_DEBUG=1 uv run python3 python/bridge/hooks.py serve
+	rm -rf .cache && POLKA_DEBUG=1 uv run python3 python/bridge/hooks.py serve
 
 compile:
 	@echo "Compiling Rust extension..."

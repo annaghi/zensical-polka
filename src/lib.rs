@@ -19,7 +19,7 @@ fn create_parser(icon_dirs: Vec<PathBuf>) -> MarkdownIt {
     extra::strikethrough::add(&mut md);
     extra::tables::add(&mut md);
     html::add(&mut md);
-    polka::add(&mut md, icon_dirs);
+    polka::add(&mut md, vec![], icon_dirs);
     md
 }
 
